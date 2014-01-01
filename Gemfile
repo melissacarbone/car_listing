@@ -39,8 +39,8 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'capybara'
   gem 'pry-rails'
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'simple_form'
+  gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password
