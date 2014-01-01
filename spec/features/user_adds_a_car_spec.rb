@@ -23,5 +23,20 @@ feature 'User adds a car' do
       expect(page).to have_content('Car was successfully created!')
     end
   end
-    context 'with invalid attributes do'
+  context 'with invalid attributes do'
+    it 'does not provide valid attributes' do
+      visit 'cars/new'
+
+      click_on 'Submit'
+
+      within ".input.car_color" do
+      expect(page).to have_content "can't be blank"
+      end
+      within ".input.car_year" do
+      expect(page).to have_content "can't be blank"
+      end
+      within ".input.car_mileage" do
+      expect(page).to have_content "can't be blank"
+      end
+    end
 end
