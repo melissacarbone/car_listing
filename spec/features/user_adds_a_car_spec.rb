@@ -24,7 +24,7 @@ feature 'User adds a car' do
     end
   end
   context 'with invalid attributes do'
-    it 'does not provide valid attributes' do
+    it 'does not provide required attributes' do
       visit 'cars/new'
 
       click_on 'Submit'
@@ -38,5 +38,16 @@ feature 'User adds a car' do
       within ".input.car_mileage" do
       expect(page).to have_content "can't be blank"
       end
+    end
+
+    it 'provides a year before 1980' do
+      visit 'cars/new'
+
+      fill_in 'Color', with: 'Red'
+      fill_in 'Year', with: '1950'
+      fill_in 'Mileage', with: '100000'
+
+      click_on 'Submit'
+      expect(page).to have_content "must be greater than or equal to 1980"
     end
 end
