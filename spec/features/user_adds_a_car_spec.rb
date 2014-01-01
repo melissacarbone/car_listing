@@ -57,4 +57,17 @@ feature 'User adds a car' do
       click_on 'Submit'
       expect(page).to have_content "must be greater than or equal to 1980"
     end
+  context 'user is redirected to new car page after submitting new form' do
+    it 'redirects to new car path' do
+
+      visit 'cars/new'
+
+      fill_in 'Color', with: 'Red'
+      fill_in 'Year', with: 1980
+      fill_in 'Mileage', with: 100000
+
+      click_on 'Submit'
+      expect(page).to have_content('Create a New Car')
+      end
+    end
 end
