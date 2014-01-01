@@ -22,6 +22,13 @@ feature 'User adds a car' do
       click_on 'Submit'
       expect(page).to have_content('Car was successfully created!')
     end
+
+    it 'sees an optional description field' do
+      visit 'cars/new'
+
+      expect(page).to have_content('Description')
+    end
+
   end
   context 'with invalid attributes do'
     it 'does not provide required attributes' do
